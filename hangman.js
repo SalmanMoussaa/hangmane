@@ -59,5 +59,12 @@ window.onload= function(){
     document.getElementById("btng").addEventListener("click",guessLetter);
 
   
- 
+    if (gameState.guessesRemaining === 0) {
+        alert("Game over! The word was: " + gameState.word);
+        resetGame();
+    } else if (gameState.word.split("").every(letter => gameState.lettersGuessed.indexOf(letter) !== -1)) {
+        alert("Congratulations, you guessed the word!");
+    
+}
+document.getElementById("btnA").addEventListener("click",resetGame);
 }
