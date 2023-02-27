@@ -36,5 +36,28 @@ window.onload= function(){
          document.getElementById("guesses").textContent = gameState.guessesRemaining;
          document.getElementById("letters").textContent = gameState.lettersGuessed.join(", ");
      }
+     function guessLetter() {
+        var letter = document.getElementById("guess").value;
+        document.getElementById("guess").value = "";
+        if (/^[a-z]$/.test(letter)) {
+            if (gameState.lettersGuessed.indexOf(letter) !== -1) {
+                alert("You already guessed that letter!");
+            } else {
+                gameState.lettersGuessed.push(letter);
+                if (gameState.word.indexOf(letter) !== -1) {
+                    alert("You guessed a letter in the word!");
+                } else {
+                    gameState.guessesRemaining--;
+                    alert("Sorry, that letter is not in the word.");
+                }
+                updateDisplay();
+            }
+        } else {
+            alert("Please enter a single lowercase letter.");
+        }
+    }
+    document.getElementById("btng").addEventListener("click",guessLetter);
+
+  
  
 }
