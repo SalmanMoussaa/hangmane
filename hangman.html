@@ -9,15 +9,12 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <div id="options"></div>
-        <div id="letter" class="letter hide"></div>
-        <div id="user-input"></div>
-        <canvas id="canvas"></canvas>
-        <div id="new-game" class="new-game hide">
-          <div id="result-text"></div>
-          <button id="new-game-button">New Game</button>
-        </div>
-      </div>
+    <h1>Hangman</h1>
+	<p>Guess the word:</p>
+	<p id="word"></p>
+	<p>Guesses remaining: <span id="guesses"></span></p>
+	<p>Letters guessed: <span id="letters"></span></p>
+	<input type="text" id="guess" placeholder="Enter a letter" />
+	<button id="btng">Guess</button>
 </body>
 </html>
