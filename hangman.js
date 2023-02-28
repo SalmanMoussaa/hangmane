@@ -67,4 +67,5 @@ window.onload= function(){
         hangmanImage.src = `Assets/hangman${wrongGuesses}.jpg`;
     }
     updateHangmanImage();
+    document.getElementById("btnA").addEventListener("click",alert("refresh to play again"));
 }
