@@ -1,4 +1,5 @@
 window.onload= function(){
+    var wrongGuesses=0;
     var words = [
         "javascript",
         "python",
@@ -42,6 +43,7 @@ window.onload= function(){
         if (/^[a-z]$/.test(letter)) {
             if (gameState.lettersGuessed.indexOf(letter) !== -1) {
                 alert("You already guessed that letter!");
+                wrongGuesses+=1;
             } else {
                 gameState.lettersGuessed.push(letter);
                 if (gameState.word.indexOf(letter) !== -1) {
@@ -49,22 +51,20 @@ window.onload= function(){
                 } else {
                     gameState.guessesRemaining--;
                     alert("Sorry, that letter is not in the word.");
+                    wrongGuesses+=1;
                 }
                 updateDisplay();
             }
         } else {
             alert("Please enter a single lowercase letter.");
+            
+            wrongGuesses+=1;
         }
     }
     document.getElementById("btng").addEventListener("click",guessLetter);
-
-  
-    if (gameState.guessesRemaining === 0) {
-        alert("Game over! The word was: " + gameState.word);
-        resetGame();
-    } else if (gameState.word.split("").every(letter => gameState.lettersGuessed.indexOf(letter) !== -1)) {
-        alert("Congratulations, you guessed the word!");
-    
-}
-document.getElementById("btnA").addEventListener("click",resetGame);
+    function updateHangmanImage() {
+        const hangmanImage = document.querySelector("#hangman img");
+        hangmanImage.src = `Assets/hangman${wrongGuesses}.jpg`;
+    }
+    updateHangmanImage();
 }
